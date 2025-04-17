@@ -14,9 +14,15 @@ public class Day01 extends Day {
 
     @Override
     public String part1(List<String> input) {
-        int sumOfCal = 0;
+        List<Integer> elves = countCalories(input);
+
+        return Integer.toString(elves.getLast());
+    }
+
+    private static List<Integer> countCalories(List<String> input) {
         List<Integer> elves = new ArrayList<>();
 
+        int sumOfCal = 0;
         for(String element : input) {
             if(element.isEmpty()){
                 elves.add(sumOfCal);
@@ -28,16 +34,17 @@ public class Day01 extends Day {
         }
         elves.add(sumOfCal);
         Collections.sort(elves);
-
-        return Integer.toString(elves.getLast());
+        return elves;
     }
-
-
-
 
     @Override
     public String part2(List<String> input) {
-        return input.isEmpty() ? "" : input.get(0);
+        List<Integer> elves = countCalories(input);
+        return Integer.toString(
+            elves.get(elves.size()-1)
+            + elves.get(elves.size()-2)
+            + elves.get(elves.size()-3)
+        );
     }
 
 }
