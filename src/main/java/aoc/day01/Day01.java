@@ -4,6 +4,7 @@ import aoc.Day;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Day01 extends Day {
@@ -16,7 +17,7 @@ public class Day01 extends Day {
     public String part1(List<String> input) {
         List<Integer> elves = countCalories(input);
 
-        return Integer.toString(elves.getLast());
+        return Integer.toString(elves.getFirst());
     }
 
     private static List<Integer> countCalories(List<String> input) {
@@ -33,7 +34,8 @@ public class Day01 extends Day {
 
         }
         elves.add(sumOfCal);
-        Collections.sort(elves);
+        // Descending
+        elves.sort(Comparator.reverseOrder());
         return elves;
     }
 
@@ -41,10 +43,9 @@ public class Day01 extends Day {
     public String part2(List<String> input) {
         List<Integer> elves = countCalories(input);
         return Integer.toString(
-            elves.get(elves.size()-1)
-            + elves.get(elves.size()-2)
-            + elves.get(elves.size()-3)
+            elves.get(0)
+                + elves.get(1)
+                + elves.get(2)
         );
     }
-
 }
