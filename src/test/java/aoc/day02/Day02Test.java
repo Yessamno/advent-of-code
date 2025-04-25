@@ -58,12 +58,25 @@ public class Day02Test {
         assertThat(result).isEqualTo("3");
     }
 
-    @Disabled
     @Test
     void thePlayRockWePlayRockAndDraw() {
         List<String> input = List.of(OPP_ROCK + " " + OUR_ROCK);
         String result = target.part1(input);
         assertThat(result).isEqualTo("4");
+    }
+
+    @Test
+    void thePlayPaperWePlayPaperAndDraw() {
+        List<String> input = List.of(Day02.OPP_PAPER + " " + Day02.OUR_PAPER);
+        String result = target.part1(input);
+        assertThat(result).isEqualTo("5");
+    }
+
+    @Test
+    void thePlayScissorsWePlayScissorsAndDraw() {
+        List<String> input = List.of(Day02.OPP_SCISSORS + " " + Day02.OUR_SCISSORS);
+        String result = target.part1(input);
+        assertThat(result).isEqualTo("6");
     }
 
     @Test

@@ -8,9 +8,9 @@ public class Day02 extends Day {
     public static final String OPP_ROCK = "A";
     public static final String OUR_SCISSORS = "Z";
     public static final String OUR_ROCK = "X";
-    private static final String OUR_PAPER = "Y";
-    private static final String OPP_PAPER = "B";
-    public final String OPP_SCISSORS = "C";
+    public static final String OUR_PAPER = "Y";
+    public static final String OPP_PAPER = "B";
+    public static final String OPP_SCISSORS = "C";
 
     static {
         currentDay = buildCurrentDay(new Object() {
@@ -28,9 +28,9 @@ public class Day02 extends Day {
     @Override
     public String part1(List<String> input) {
         int score = 0;
-        // TODO extract our move and switch on that instead of both moves
         String game = input.get(0);
         String ourMove = game.split(" ")[1];
+        String theirMove = game.split(" ")[0];
         switch (ourMove) {
             case OUR_SCISSORS:
                 score += 3;
@@ -44,7 +44,15 @@ public class Day02 extends Day {
             default:
                 score = 0;
         }
+        score+= resultScore(ourMove, theirMove);
         return String.valueOf(score);
+    }
+
+    private int resultScore(String ourMove, String theirMove) {
+        if(ourMove.equals(OUR_ROCK) && theirMove.equals(OPP_ROCK)){
+            return 3;
+        }
+        return 0;
     }
 
 
