@@ -14,7 +14,6 @@ public class Day02Test {
     private final Day02 target = new Day02();
 
     @Test
-    @Disabled
     public void partOne(){
         // Given
         List<String> input = List.of("A Y",
