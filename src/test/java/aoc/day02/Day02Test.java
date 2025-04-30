@@ -98,6 +98,7 @@ public class Day02Test {
         assertThat(result).isEqualTo("9");
     }
 
+
     @Test
     @Disabled
     public void partTwo(){

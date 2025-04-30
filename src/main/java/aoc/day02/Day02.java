@@ -37,6 +37,7 @@ public class Day02 extends Day {
         return String.valueOf(score);
     }
 
+
     private static int moveScore(String ourMove) {
         return switch (ourMove) {
             case "Scissors" -> 3;
