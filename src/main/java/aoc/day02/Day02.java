@@ -44,16 +44,12 @@ public class Day02 extends Day {
     }
 
     private String findMove(String moveLetter) {
-        if(moveLetter.equals("X") || moveLetter.equals("A")){
-            return "Rock";
-        }
-        else if(moveLetter.equals("Y") || moveLetter.equals("B")){
-            return "Paper";
-        }
-        else if(moveLetter.equals("Z") || moveLetter.equals("C")){
-            return "Scissors";
-        }
-        throw new IllegalArgumentException("Unexpected Value " + moveLetter);
+        return switch (moveLetter) {
+            case "X", "A" -> "Rock";
+            case "Y", "B" -> "Paper";
+            case "Z", "C" -> "Scissors";
+            default -> throw new IllegalArgumentException("Unexpected Value " + moveLetter);
+        };
     }
 
     private int resultScore(String ourMove, String theirMove) {
