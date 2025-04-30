@@ -80,6 +80,25 @@ public class Day02Test {
     }
 
     @Test
+    void winWithRock() {
+        List<String> input = List.of(OPP_SCISSORS + " " + OUR_ROCK);
+        String result = target.part1(input);
+        assertThat(result).isEqualTo("7");
+    }
+    @Test
+    void winWithPaper() {
+        List<String> input = List.of(OPP_ROCK + " " + OUR_PAPER);
+        String result = target.part1(input);
+        assertThat(result).isEqualTo("8");
+    }
+    @Test
+    void winWithScissors() {
+        List<String> input = List.of(OPP_PAPER + " " + OUR_SCISSORS);
+        String result = target.part1(input);
+        assertThat(result).isEqualTo("9");
+    }
+
+    @Test
     @Disabled
     public void partTwo(){
         // Given

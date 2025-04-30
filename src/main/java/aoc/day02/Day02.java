@@ -11,6 +11,9 @@ public class Day02 extends Day {
     public static final String OUR_PAPER = "Y";
     public static final String OPP_PAPER = "B";
     public static final String OPP_SCISSORS = "C";
+    public static final int WIN_SCORE = 6;
+    public static final int DRAW_SCORE = 3;
+    public static final int LOSE_SCORE = 0;
 
     static {
         currentDay = buildCurrentDay(new Object() {
@@ -27,7 +30,7 @@ public class Day02 extends Day {
      */
     @Override
     public String part1(List<String> input) {
-        String game = input.get(0);
+        String game = input.getFirst();
         String ourMove = findMove(game.split(" ")[1]);
         String theirMove = findMove(game.split(" ")[0]);
         int score = resultScore(ourMove, theirMove) + moveScore(ourMove);
@@ -45,18 +48,24 @@ public class Day02 extends Day {
 
     private String findMove(String moveLetter) {
         return switch (moveLetter) {
-            case "X", "A" -> "Rock";
-            case "Y", "B" -> "Paper";
-            case "Z", "C" -> "Scissors";
+            case OUR_ROCK, OPP_ROCK -> "Rock";
+            case OUR_PAPER, OPP_PAPER -> "Paper";
+            case OUR_SCISSORS, OPP_SCISSORS -> "Scissors";
             default -> throw new IllegalArgumentException("Unexpected Value " + moveLetter);
         };
     }
 
     private int resultScore(String ourMove, String theirMove) {
         if(ourMove.equals(theirMove)){
-            return 3;
+            return DRAW_SCORE;
         }
-        return 0;
+        else if(
+            theirMove.equals("Scissors") && ourMove.equals("Rock") ||
+            theirMove.equals("Rock") && ourMove.equals("Paper") ||
+            theirMove.equals("Paper") && ourMove.equals("Scissors")) {
+            return WIN_SCORE;
+        }
+        return LOSE_SCORE;
     }
 
 
