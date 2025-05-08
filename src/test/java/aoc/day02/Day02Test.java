@@ -99,16 +99,16 @@ public class Day02Test {
 
 
     @Test
-    @Disabled
+
     public void partTwo(){
         // Given
-        List<String> input = List.of("");
+        List<String> input = List.of(OPP_PAPER + " " + "X");
 
         // When
         String result = target.part2(input);
 
         // Then
-        assertThat(result).isEqualTo("");
+        assertThat(result).isEqualTo("3");
     }
 
 }
