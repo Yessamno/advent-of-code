@@ -17,6 +17,9 @@ public class Day02 extends Day {
     public static final String ROCK = "Rock";
     public static final String PAPER = "Paper";
     public static final String SCISSORS = "Scissors";
+    public static final String LOSS_LETTER = "X";
+    public static final String DRAW_LETTER = "Y";
+    public static final String WIN_LETTER = "Z";
 
     static {
         currentDay = buildCurrentDay(new Object() {
@@ -82,13 +85,49 @@ public class Day02 extends Day {
     }
 
     /*
-     * Y = win
-     * X = draw
-     * Z = lose
+     * X = lose
+     * Y = draw
+     * Z = win
      * */
     @Override
     public String part2(List<String> input) {
+        int totalScore = 0;
+        for(String game: input){
+            String theirMove = findMove(game.split(" ")[0]);
+            String strategy = game.split(" ")[1];
+            String ourMove;
 
-        return null;
+            if(strategy.equals(LOSS_LETTER)){
+                ourMove = getLosingMove(theirMove);
+            } else if (strategy.equals(WIN_LETTER)) {
+
+                ourMove = getWinMove(theirMove);
+                totalScore += WIN_SCORE;
+
+            } else{
+                ourMove = theirMove;
+                totalScore += DRAW_SCORE;
+            }
+            totalScore += moveScore(ourMove);
+        }
+        return String.valueOf(totalScore);
+    }
+
+    private String getWinMove(String theirMove) {
+        return switch (theirMove) {
+            case ROCK -> PAPER;
+            case PAPER -> SCISSORS;
+            case SCISSORS -> ROCK;
+            default -> throw new UnsupportedOperationException();
+        };
+    }
+
+    private static String getLosingMove(String theirMove) {
+        return switch (theirMove) {
+            case ROCK -> SCISSORS;
+            case PAPER -> ROCK;
+            case SCISSORS -> PAPER;
+            default -> throw new UnsupportedOperationException();
+        };
     }
 }

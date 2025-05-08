@@ -11,10 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Day02Test {
 
+    public static final String SHOULD_LOSE = "X";
     private final Day02 target = new Day02();
 
     @Test
-    public void partOne(){
+    public void partOne() {
         // Given
         List<String> input = List.of("A Y",
             "B X",
@@ -28,7 +29,7 @@ public class Day02Test {
     }
 
     @Test
-    public void theyPlayPaperWePlayRockAndLose(){
+    public void theyPlayPaperWePlayRockAndLose() {
         // Given
         List<String> input = List.of("B X");
 
@@ -40,7 +41,7 @@ public class Day02Test {
     }
 
     @Test
-    public void theyPlayScissorsWePlayPaper(){
+    public void theyPlayScissorsWePlayPaper() {
         List<String> input = List.of("C Y");
 
         // When
@@ -84,12 +85,14 @@ public class Day02Test {
         String result = target.part1(input);
         assertThat(result).isEqualTo("7");
     }
+
     @Test
     void winWithPaper() {
         List<String> input = List.of(OPP_ROCK + " " + OUR_PAPER);
         String result = target.part1(input);
         assertThat(result).isEqualTo("8");
     }
+
     @Test
     void winWithScissors() {
         List<String> input = List.of(OPP_PAPER + " " + OUR_SCISSORS);
@@ -100,15 +103,19 @@ public class Day02Test {
 
     @Test
 
-    public void partTwo(){
+    public void partTwo() {
         // Given
-        List<String> input = List.of(OPP_PAPER + " " + "X");
+        List<String> input = List.of(
+            "A Y",
+            "B X",
+            "C Z"
+        );
 
         // When
         String result = target.part2(input);
 
         // Then
-        assertThat(result).isEqualTo("3");
+        assertThat(result).isEqualTo("12");
     }
 
 }
