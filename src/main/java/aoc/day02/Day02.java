@@ -31,6 +31,8 @@ public class Day02 extends Day {
      *
      * @param input has lines where first column is their move, and second column is our move
      */
+
+
     @Override
     public String part1(List<String> input) {
         int totalScore = 0;
@@ -50,9 +52,9 @@ public class Day02 extends Day {
 
     private static int moveScore(String ourMove) {
         return switch (ourMove) {
-            case "Scissors" -> 3;
-            case "Rock" -> 1;
-            case "Paper" -> 2;
+            case SCISSORS -> 3;
+            case ROCK -> 1;
+            case PAPER -> 2;
             default -> 0;
         };
     }
@@ -71,15 +73,19 @@ public class Day02 extends Day {
             return DRAW_SCORE;
         }
         else if(
-            theirMove.equals("Scissors") && ourMove.equals("Rock") ||
-            theirMove.equals("Rock") && ourMove.equals("Paper") ||
-            theirMove.equals("Paper") && ourMove.equals("Scissors")) {
+            theirMove.equals(SCISSORS) && ourMove.equals(ROCK) ||
+            theirMove.equals(ROCK) && ourMove.equals(PAPER) ||
+            theirMove.equals(PAPER) && ourMove.equals(SCISSORS)) {
             return WIN_SCORE;
         }
         return LOSE_SCORE;
     }
 
-
+    /*
+     * Y = win
+     * X = draw
+     * Z = lose
+     * */
     @Override
     public String part2(List<String> input) {
 
