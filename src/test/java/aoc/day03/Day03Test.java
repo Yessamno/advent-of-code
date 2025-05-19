@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Day03Test {
 
     private final Day03 target = new Day03();
-    @Disabled
+
     @Test
     public void partOne() {
         // Given
@@ -33,7 +33,7 @@ public class Day03Test {
     }
 
     @Test
-    public void findDuplicatesScore(){
+    public void firstRuckSack(){
         List<String> input = List.of("vJrwpWtwJgWrhcsFMMfFFhFp");
 
         // When
@@ -41,5 +41,15 @@ public class Day03Test {
 
         // Then
         assertThat(result).isEqualTo("16");
+    }
+    @Test
+    public void secondRuckSack(){
+        List<String> input = List.of("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL");
+
+        // When
+        String result = target.part1(input);
+
+        // Then
+        assertThat(result).isEqualTo("38");
     }
 }
