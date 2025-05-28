@@ -52,4 +52,22 @@ public class Day03Test {
         // Then
         assertThat(result).isEqualTo("38");
     }
+
+    @Test
+    public void partTwo() {
+        // Given
+        List<String> input = List.of(
+            "vJrwpWtwJgWrhcsFMMfFFhFp",
+            "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+            "PmmdzqPrVvPwwTWBwg",
+            "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+            "ttgJtRGJQctTZtZT",
+            "CrZsJsPPZsGzwwsLwLmpwMDw"
+        );
+
+        String result = target.part2(input);
+
+        assertThat(result).isEqualTo("70");
+    }
+
 }

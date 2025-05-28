@@ -15,6 +15,8 @@ public class Day03 extends Day {
         });
     }
 
+    private int priorityTotal;
+
     //There is always a duplicated letter
     // The input is always even and usually the duplicates are in two different halves
     //duplicates have priorities, lowercase a~z 1-26 and uppercase A~Z 27-52
@@ -22,7 +24,7 @@ public class Day03 extends Day {
     // find the sum of all priorities for the given input
     @Override
     public String part1(List<String> input) {
-        int priorityTotal = 0;
+        priorityTotal = 0;
         for (String ruckSack : input) {
             String item = findDuplicates(ruckSack);
             int priority = findPriority(item);
@@ -32,10 +34,8 @@ public class Day03 extends Day {
         return String.valueOf(priorityTotal);
     }
 
-    @Override
-    public String part2(List<String> input) {
-        return "157";
-    }
+
+
 
     private int findPriority(String item) {
         int itemCodepoint = Character.codePointAt(item, 0);
@@ -60,5 +60,23 @@ public class Day03 extends Day {
     private static HashSet<String> setOfCharacters(String compartment) {
         return new HashSet<>(Arrays.asList((compartment.split(""))));
     }
+    @Override
+    public String part2(List<String> input) {
+        int secondPriorityTotal = 0;
+        for( int i = 0; i< input.size(); i+=3){
+            Set<String> firstGroup = setOfCharacters(input.get(i));
+            Set<String> secondGroup = setOfCharacters(input.get(i+1));
+            Set<String> thirdGroup = setOfCharacters(input.get(i+2));
 
+            firstGroup.retainAll(secondGroup);
+            firstGroup.retainAll(thirdGroup);
+
+            String commonChar = List.copyOf(firstGroup).getFirst();
+            secondPriorityTotal += findPriority(commonChar);
+        }
+        return String.valueOf(secondPriorityTotal);
+    }
 }
+
+
+
