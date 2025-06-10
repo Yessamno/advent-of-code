@@ -41,7 +41,7 @@ public class Day04Test {
             "2-6,4-8");
 
         // When
-        String result = target.part1(input);
+        String result = target.part2(input);
 
         // Then
         assertThat(result).isEqualTo("4");

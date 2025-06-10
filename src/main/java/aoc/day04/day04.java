@@ -5,7 +5,6 @@ import aoc.Day;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 
 public class day04 extends Day {
 
@@ -20,19 +19,28 @@ public class day04 extends Day {
         int fullyContainedPairs = 0;
 
         for (String section : input) {
-            String[] ranges = section.split(",");
-            List<Integer> firstRange = expandNumbers(ranges[0]);
-            List<Integer> secondRange = expandNumbers(ranges[1]);
-
-            HashSet<Integer> first = new HashSet<>(firstRange);
-            HashSet<Integer> second = new HashSet<>(secondRange);
-            if (first.containsAll(secondRange) || second.containsAll(firstRange)) {
+            Ranges ranges = generateRanges(section);
+            if (ranges.first().containsAll(ranges.second()) || ranges.second().containsAll(ranges.first())) {
                 fullyContainedPairs++;
             }
         }
 
         return String.valueOf(fullyContainedPairs);
 
+    }
+
+    private Ranges generateRanges(String section) {
+        String[] ranges = section.split(",");
+        List<Integer> firstRange = expandNumbers(ranges[0]);
+        List<Integer> secondRange = expandNumbers(ranges[1]);
+
+        HashSet<Integer> first = new HashSet<>(firstRange);
+        HashSet<Integer> second = new HashSet<>(secondRange);
+        Ranges result = new Ranges(first, second);
+        return result;
+    }
+
+    private record Ranges(HashSet<Integer> first, HashSet<Integer> second) {
     }
 
     public List<Integer> expandNumbers(String range) {
@@ -51,6 +59,24 @@ public class day04 extends Day {
 
     @Override
     public String part2(List<String> input) {
-        return "";
+
+        int overlappingPairs = 0;
+
+        for (String section : input) {
+            String[] ranges = section.split(",");
+            List<Integer> firstRange = expandNumbers(ranges[0]);
+            List<Integer> secondRange = expandNumbers(ranges[1]);
+
+            HashSet<Integer> first = new HashSet<>(firstRange);
+            HashSet<Integer> second = new HashSet<>(secondRange);
+
+            first.retainAll(second);
+
+            if (!first.isEmpty()) {
+                overlappingPairs++;
+            }
+        }
+
+        return String.valueOf(overlappingPairs);
     }
 }
