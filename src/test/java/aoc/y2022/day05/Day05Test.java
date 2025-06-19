@@ -42,7 +42,6 @@ public class Day05Test {
     }
 
     @Test
-    @Disabled
     void twoStacks() {
         String result = target.part1(List.of(
 //            "     [D]",
