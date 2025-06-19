@@ -1,12 +1,12 @@
 package aoc;
 
+import aoc.y2022.FakeDay01;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,19 +40,4 @@ class DayTest {
         System.setOut(originalOut);
     }
 
-    private static class FakeDay01 extends Day {
-        public FakeDay01() {
-            super();
-        }
-
-        @Override
-        public String part1(List<String> input) {
-            return "123";
-        }
-
-        @Override
-        public String part2(List<String> input) {
-            return "456";
-        }
-    }
 }

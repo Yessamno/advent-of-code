@@ -1,4 +1,4 @@
-package aoc.day04;
+package aoc.y2022.day04;
 
 import aoc.Day;
 

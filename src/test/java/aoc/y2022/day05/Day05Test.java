@@ -1,6 +1,7 @@
-package aoc.day05;
+package aoc.y2022.day05;
 
 
+import aoc.y2022.day05.Day05;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

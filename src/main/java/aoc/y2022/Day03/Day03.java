@@ -1,4 +1,4 @@
-package aoc.Day03;
+package aoc.y2022.Day03;
 
 import java.util.Arrays;
 import java.util.HashSet;

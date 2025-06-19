@@ -16,7 +16,7 @@ public abstract class Day {
     public abstract String part2(List<String> input);
 
     private List<String> loadInput() {
-        String fileName = String.format("day%02d.txt", this.dayNumber());
+        String fileName = String.format("%s/day%02d.txt", this.year(), this.dayNumber());
 
         InputStream inputForDay = ClassLoader.getSystemResourceAsStream(fileName);
         if (Objects.isNull(inputForDay)) {
@@ -47,6 +47,10 @@ public abstract class Day {
 
     public int dayNumber() {
         return Integer.parseInt(this.getClass().getSimpleName().replaceAll("[^0-9]", ""));
+    }
+
+    private String year() {
+        return this.getClass().getPackageName().replaceAll("aoc.y","").replaceAll("\\..*$","");
     }
 
     protected static Day buildCurrentDay(Object o) {

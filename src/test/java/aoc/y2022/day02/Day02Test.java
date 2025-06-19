@@ -1,12 +1,12 @@
-package aoc.day02;
+package aoc.y2022.day02;
 
 
-import org.junit.jupiter.api.Disabled;
+import aoc.y2022.day02.Day02;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static aoc.day02.Day02.*;
+import static aoc.y2022.day02.Day02.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Day02Test {
