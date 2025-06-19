@@ -44,9 +44,9 @@ public class Day05Test {
     @Test
     void twoStacks() {
         String result = target.part1(List.of(
-//            "     [D]",
-            "[N]  [C]",
-            "[Z]  [M]",
+//            "    [D]",
+            "[N] [C]",
+            "[Z] [M]",
             " 1    2",
             ""
         ));
