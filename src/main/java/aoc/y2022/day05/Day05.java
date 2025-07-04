@@ -27,11 +27,15 @@ public class Day05 extends Day {
             Stack<String> currentStack = new Stack<>();
             stacks.add(currentStack);
 
+            //The current going from the bottom of the stacks to the top
+            List<String> lines = input.subList(0,stackBottomLineIndex+1).reversed();
 
-            for (int currentLineIndex = stackBottomLineIndex; currentLineIndex >= 0; currentLineIndex--) {
-                String wholeLine = input.get(currentLineIndex);
-                currentStack.push(wholeLine.substring(subStartIndex, subEndIndex));
+            for (String wholeRow: lines) {
+                String itemFromCurrentStack = wholeRow.substring(subStartIndex, subEndIndex);
 
+                if(!itemFromCurrentStack.equals(" ")) {
+                    currentStack.push(itemFromCurrentStack);
+                }
             }
 
         }

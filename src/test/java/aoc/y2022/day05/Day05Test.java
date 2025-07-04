@@ -28,6 +28,18 @@ public class Day05Test {
     }
 
     @Test
+    void threeStacks() {
+        String result = target.part1(List.of(
+            "    [D]   ",
+            "[N] [C]   ",
+            "[Z] [M] [P]",
+            " 1   2   3",
+            ""
+            ));
+        Assertions.assertThat(result).isEqualTo("NDP");
+    }
+
+    @Test
     void firstStack() {
         String result = target.part1(List.of(
             "[D]",
@@ -44,14 +56,14 @@ public class Day05Test {
     @Test
     void twoStacks() {
         String result = target.part1(List.of(
-//            "    [D]",
+            "    [D]",
             "[N] [C]",
             "[Z] [M]",
             " 1    2",
             ""
         ));
         Assertions.assertThat(result).isEqualTo(
-            "NC"
+            "ND"
         );
     }
 }
