@@ -12,7 +12,6 @@ public class Day05Test {
     private final Day05 target = new Day05();
 
     @Test
-    @Disabled
     void partOne() {
         String result = target.part1(List.of(
             "    [D]   ",
@@ -28,13 +27,26 @@ public class Day05Test {
     }
 
     @Test
+    void moveOneItem() {
+        String result = target.part1(List.of(
+            "    [D]   ",
+            "[N] [C]   ",
+            "[Z] [M] [P]",
+            " 1   2   3",
+            "",
+            "move 1 from 1 to 2"));
+        Assertions.assertThat(result).isEqualTo("ZNP");
+    }
+
+    @Test
     void threeStacks() {
         String result = target.part1(List.of(
             "    [D]   ",
             "[N] [C]   ",
             "[Z] [M] [P]",
             " 1   2   3",
-            ""
+            "",
+            "move 0 from 1 to 1"
             ));
         Assertions.assertThat(result).isEqualTo("NDP");
     }
@@ -46,7 +58,8 @@ public class Day05Test {
             "[N]",
             "[Z]",
             " 1",
-            ""
+            "",
+            "move 0 from 1 to 1"
         ));
         Assertions.assertThat(result).isEqualTo(
             "D"
@@ -60,7 +73,8 @@ public class Day05Test {
             "[N] [C]",
             "[Z] [M]",
             " 1    2",
-            ""
+            "",
+            "move 0 from 1 to 1"
         ));
         Assertions.assertThat(result).isEqualTo(
             "ND"
