@@ -80,4 +80,19 @@ public class Day05Test {
             "ND"
         );
     }
+
+    @Test
+    void partTwo() {
+        String result = target.part2(List.of(
+            "    [D]   ",
+            "[N] [C]   ",
+            "[Z] [M] [P]",
+            " 1   2   3",
+            "",
+            "move 1 from 2 to 1",
+            "move 3 from 1 to 3",
+            "move 2 from 2 to 1",
+            "move 1 from 1 to 2"));
+        Assertions.assertThat(result).isEqualTo("MCD");
+    }
 }

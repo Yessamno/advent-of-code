@@ -3,6 +3,7 @@ package aoc.y2022.day05;
 import aoc.Day;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import java.util.Stack;
@@ -16,20 +17,15 @@ public class Day05 extends Day {
     @Override
     public String part1(List<String> input) {
 
-        List<Stack<String>> stacks = new ArrayList<>();
-        int numberLineIndex = input.indexOf("") - 1;
-        int stackBottomLineIndex = input.indexOf("") - 2;
-        int noOfStacks = getNoOfStacks(input, numberLineIndex);
+        Yard yard = initialiseFromInput(input);
+        crane9001(yard.stacks(), yard.instructions(), false);
 
-        //The current line going from the bottom of the stacks to the top
-        List<String> lines = input.subList(0,stackBottomLineIndex+1).reversed();
-        populateStacks(noOfStacks, stacks, lines);
+        return readTops(yard);
+    }
 
-        List<String> instructions = input.subList(numberLineIndex + 2, input.size());
-        takeInstructions(stacks, instructions);
-
+    private static String readTops(Yard yard) {
         StringBuilder result = new StringBuilder();
-        for(Stack<String> currentStack : stacks){
+        for (Stack<String> currentStack : yard.stacks()) {
             result.append(currentStack.peek());
         }
         return result.toString();
@@ -48,35 +44,79 @@ public class Day05 extends Day {
             stacks.add(currentStack);
 
             for (String wholeRow: lines) {
-                String itemFromCurrentStack = wholeRow.substring(subStartIndex, subEndIndex);
+                if(subEndIndex <= wholeRow.length() - 1) {
+                    String itemFromCurrentStack = wholeRow.substring(subStartIndex, subEndIndex);
 
-                if(!itemFromCurrentStack.equals(" ")) {
-                    currentStack.push(itemFromCurrentStack);
+
+                    if(!itemFromCurrentStack.equals(" ")) {
+                        currentStack.push(itemFromCurrentStack);
+                    }
                 }
+
+
             }
 
         }
     }
 
-    private static void takeInstructions(List<Stack<String>> stacks, List<String> instructions) {
+
+
+    private static void crane9001(List<Stack<String>> stacks, List<String> instructions, boolean retainOrder) {
 
         for(String instruction : instructions){
 
             String[] tokens = instruction.split(" ");
-            int itemsToMove = Integer.parseInt(tokens[1]);
-
-            Stack<String>sourceStack = stacks.get(Integer.parseInt(tokens[3]) - 1);
-            Stack<String>targetStack = stacks.get(Integer.parseInt(tokens[5]) - 1);
-
-            while(itemsToMove-- > 0) {
-                targetStack.push(sourceStack.pop());
+            List<String> items = pickupCrates(stacks.get(Integer.parseInt(tokens[3]) - 1), Integer.parseInt(tokens[1]));
+            if (retainOrder) {
+                Collections.reverse(items);
             }
+            dropCrates(stacks, tokens, items);
+
+        }
+    }
+    private static List<String> pickupCrates(Stack<String> sourceStack, int itemsToMove) {
+        List<String> items = new ArrayList<>();
+
+        while(itemsToMove-- > 0) {
+            items.add(sourceStack.pop());
+
+        }
+        return items;
+    }
+
+    private static void dropCrates(List<Stack<String>> stacks, String[] tokens, List<String> items) {
+        Stack<String>targetStack = stacks.get(Integer.parseInt(tokens[5]) - 1);
+        for(String crates : items){
+            targetStack.push(crates);
         }
     }
 
 
     @Override
     public String part2(List<String> input) {
-        return "";
+        Yard yard = initialiseFromInput(input);
+        crane9001(yard.stacks(), yard.instructions(), true);
+
+        return readTops(yard);
     }
+
+    private static Yard initialiseFromInput(List<String> input) {
+        List<Stack<String>> stacks = new ArrayList<>();
+        int numberLineIndex = input.indexOf("") - 1;
+        int stackBottomLineIndex = input.indexOf("") - 2;
+        int noOfStacks = getNoOfStacks(input, numberLineIndex);
+
+        //The current line going from the bottom of the stacks to the top
+        List<String> lines = input.subList(0,stackBottomLineIndex+1).reversed();
+        populateStacks(noOfStacks, stacks, lines);
+
+        List<String> instructions = input.subList(numberLineIndex + 2, input.size());
+        Yard yard = new Yard(stacks, instructions);
+        return yard;
+    }
+
+    private record Yard(List<Stack<String>> stacks, List<String> instructions) {
+    }
+
+
 }
