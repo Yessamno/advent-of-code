@@ -18,7 +18,6 @@ public class Day02 extends Day {
     public static final String PAPER = "Paper";
     public static final String SCISSORS = "Scissors";
     public static final String LOSS_LETTER = "X";
-    public static final String DRAW_LETTER = "Y";
     public static final String WIN_LETTER = "Z";
 
     static {
