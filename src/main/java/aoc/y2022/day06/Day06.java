@@ -23,7 +23,7 @@ public class Day06 extends Day{
     }
 
     private static String getStart(int windowSize, String buffer) {
-        for (int i = windowSize; i<= buffer.length() - 3 ; i++){
+        for (int i = windowSize; i<= buffer.length() ; i++){
             String chunk = buffer.substring(i - windowSize, i);
 
             Set<Character> seen = new HashSet<>();
