@@ -23,15 +23,15 @@ public class Day06 extends Day{
     }
 
     private static String getStart(int windowSize, String buffer) {
-        for (int i = windowSize; i<= buffer.length() ; i++){
-            String chunk = buffer.substring(i - windowSize, i);
+        for (int chunkEnd = windowSize; chunkEnd<= buffer.length() ; chunkEnd++){
+            String chunk = buffer.substring((chunkEnd - windowSize), chunkEnd);
 
             Set<Character> seen = new HashSet<>();
             for(char c: chunk.toCharArray()){
                 seen.add(c);
             }
             if(seen.size() == windowSize){
-                return Integer.toString(i);
+                return Integer.toString(chunkEnd);
             }
 
         }
