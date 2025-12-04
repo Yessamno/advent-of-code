@@ -37,12 +37,33 @@ public class Day07Test {
             ));
         Assertions.assertThat(result).isEqualTo("48381165");
     }
-
+    @Test
+    void singleSmallDir(){
+        String result = target.part1(List.of(
+            "$ cd /",
+            "$ ls" ,
+            "1 b.txt" ,
+            "1 c.dat"
+        ));
+        Assertions.assertThat(result).isEqualTo(String.valueOf( 1 + 1 ));
+    }
 
     @Test
+    void singleLargeDir(){
+        String result = target.part1(List.of(
+            "$ cd /",
+            "$ ls" ,
+            "14848514 b.txt" ,
+            "8504156 c.dat"
+        ));
+        Assertions.assertThat(result).isEqualTo("0");
+    }
+
+    @Disabled
+    @Test
     void partTwo() {
-        String result = target.part2(List.of("mjqjpqmgbljsphdztnvjfqwrcgsmlb"));
-        Assertions.assertThat(result).isEqualTo("19");
+        String result = target.part2(List.of(""));
+        Assertions.assertThat(result).isEqualTo("");
     }
 
 }

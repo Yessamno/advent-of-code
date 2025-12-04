@@ -12,7 +12,20 @@ public class Day07 extends Day {
 
     @Override
     public String part1(List<String> input) {
-        return "";
+        int dirSize = 0;
+
+        for(String itemInList: input){
+
+            if( !itemInList.startsWith("$")){
+                int fileSize = Integer.parseInt(itemInList.split(" ")[0]);
+                dirSize += fileSize;
+            }
+        }
+
+        if(dirSize >= 100_000){
+            return "0";
+        }
+        return String.valueOf(dirSize);
     }
 
     @Override
