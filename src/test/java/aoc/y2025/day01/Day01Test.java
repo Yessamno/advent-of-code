@@ -50,11 +50,16 @@ class Day01Test
     }
 
     @Test
-    void movePastZeroTwiceInOnceMove(){
+    void partOneMovePastZeroTwiceInOnceMove(){
         String result = new Day01().part1(List.of("L150"));
         assertThat(result).isEqualTo("1");
     }
 
+    @Test
+    void partTwoMovePastZeroTwiceInOnceMove(){
+        String result = new Day01().part2(List.of("L150"));
+        assertThat(result).isEqualTo("2");
+    }
     @Test
     void partOneExample(){
         String result = new Day01().part1(List.of(
@@ -73,9 +78,8 @@ class Day01Test
     }
 
     @Test
-    @Disabled
     void partTwoExample(){
-        String result = new Day01().part1(List.of(
+        String result = new Day01().part2(List.of(
             "L68",
             "L30",
             "R48",
