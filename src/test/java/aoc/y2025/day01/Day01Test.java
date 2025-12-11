@@ -1,5 +1,6 @@
 package aoc.y2025.day01;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -27,19 +28,67 @@ class Day01Test
     @Test
     void movePastZero() {
         String result = new Day01().part1(List.of("L51"));
-        assertThat(result).isEqualTo("1");
+        assertThat(result).isEqualTo("0");
     }
 
     @Test
     void movePastZeroTwice() {
         String result = new Day01().part1(List.of("L200"));
-        assertThat(result).isEqualTo("2");
+        assertThat(result).isEqualTo("0");
     }
 
     @Test
-    void moveRight() {
-        String result = new Day01().part1(List.of("R49"));
+    void moveTo49ThenRightTo99() {
+        String result = new Day01().part1(List.of("L1","R50"));
         assertThat(result).isEqualTo("0");
     }
+
+    @Test
+    void moveFarLeftThenFarRight(){
+        String result = new Day01().part1(List.of("L51","R102"));
+        assertThat(result).isEqualTo("0");
+    }
+
+    @Test
+    void movePastZeroTwiceInOnceMove(){
+        String result = new Day01().part1(List.of("L150"));
+        assertThat(result).isEqualTo("1");
+    }
+
+    @Test
+    void partOneExample(){
+        String result = new Day01().part1(List.of(
+            "L68",
+            "L30",
+            "R48",
+            "L5",
+            "R60",
+            "L55",
+            "L1",
+            "L99",
+            "R14",
+            "L82"
+        ));
+        assertThat(result).isEqualTo(("3"));
+    }
+
+    @Test
+    @Disabled
+    void partTwoExample(){
+        String result = new Day01().part1(List.of(
+            "L68",
+            "L30",
+            "R48",
+            "L5",
+            "R60",
+            "L55",
+            "L1",
+            "L99",
+            "R14",
+            "L82"
+        ));
+        assertThat(result).isEqualTo(("6"));
+    }
+
 
 }
