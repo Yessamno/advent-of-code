@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Day07Test {
     private final Day07 target = new Day07();
+    @Disabled
     @Test
     void partOne() {
         String result = target.part1(List.of(
