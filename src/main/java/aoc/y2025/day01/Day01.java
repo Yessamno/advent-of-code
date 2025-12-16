@@ -40,40 +40,39 @@ public class Day01 extends Day {
 
     @Override
     public String part2(List<String> input) {
-        //L = subtract
-        //R = add
+
         int amountOfZeros = 0;
         int currentPosition = START_POSITION;
         for (String instruction : input) {
+
             String direction = instruction.substring(0, 1);
             int digits = Integer.parseInt(instruction.substring(1));
-            if (direction.equals("L")) {
-                while (digits != 0) {
-                    currentPosition --;
-                    digits--;
-                    if (currentPosition == -1) {
-                        currentPosition = 99;
-                    }
-                    if(currentPosition == 0){
-                        amountOfZeros ++;
-                    }
-                }
 
-            } else {
-                while (digits != 0) {
+            while (digits-- != 0) {
+                if(direction.equals("L")){
+                    currentPosition --;
+                }else{
                     currentPosition ++;
-                    digits--;
-                    if (currentPosition == 100) {
-                        currentPosition = 0;
-                    }
-                    if(currentPosition == 0){
-                        amountOfZeros ++;
-                    }
+                }
+                currentPosition = wrapPosition(currentPosition);
+                if(currentPosition == 0){
+                    amountOfZeros ++;
                 }
             }
+
         }
 
         return String.valueOf(amountOfZeros);
+    }
+
+    private static int wrapPosition(int currentPosition) {
+        if (currentPosition == -1) {
+            currentPosition = 99;
+        }
+        if (currentPosition == 100) {
+            currentPosition = 0;
+        }
+        return currentPosition;
     }
 
 
