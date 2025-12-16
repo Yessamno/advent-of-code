@@ -46,32 +46,30 @@ public class Day01 extends Day {
         int currentPosition = START_POSITION;
         for (String instruction : input) {
             String direction = instruction.substring(0, 1);
-            int previousPosition = currentPosition;
             int digits = Integer.parseInt(instruction.substring(1));
             if (direction.equals("L")) {
-                currentPosition -= digits;
-
-                while (currentPosition < 0) {
-                    currentPosition += 100;
-                    if(previousPosition!=0 && currentPosition != 0){
-                        amountOfZeros++;
+                while (digits != 0) {
+                    currentPosition --;
+                    digits--;
+                    if (currentPosition == -1) {
+                        currentPosition = 99;
+                    }
+                    if(currentPosition == 0){
+                        amountOfZeros ++;
                     }
                 }
-
 
             } else {
-                currentPosition += digits;
-
-                while (currentPosition > 99) {
-                    currentPosition -= 100;
-                    if(previousPosition != 0 && currentPosition != 0){
-                        amountOfZeros++;
+                while (digits != 0) {
+                    currentPosition ++;
+                    digits--;
+                    if (currentPosition == 100) {
+                        currentPosition = 0;
+                    }
+                    if(currentPosition == 0){
+                        amountOfZeros ++;
                     }
                 }
-
-            }
-            if (currentPosition == 0) {
-                amountOfZeros++;
             }
         }
 

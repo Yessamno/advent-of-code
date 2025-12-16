@@ -95,9 +95,18 @@ class Day01Test
     }
 
     @Test
-    void OverHundredExamples(){
+    void leftPassesZeroAndEndsOnZero(){
         String result = new Day01().part2(List.of(
             "L150"
+
+        ));
+        assertThat(result).isEqualTo(("2"));
+    }
+
+    @Test
+    void rightPassesZeroAndEndsOnZero(){
+        String result = new Day01().part2(List.of(
+            "R150"
 
         ));
         assertThat(result).isEqualTo(("2"));
