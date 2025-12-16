@@ -94,5 +94,14 @@ class Day01Test
         assertThat(result).isEqualTo(("6"));
     }
 
+    @Test
+    void OverHundredExamples(){
+        String result = new Day01().part2(List.of(
+            "L150"
+
+        ));
+        assertThat(result).isEqualTo(("2"));
+    }
+
 
 }
