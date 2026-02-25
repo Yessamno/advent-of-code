@@ -22,4 +22,15 @@ public class Day03Test {
         String result = new Day03().part1(List.of("987654321111111"));
         assertThat(result).isEqualTo(("98"));
     }
+
+    @Test
+    void part2Example() {
+        String result = new Day03().part2(List.of(
+            "987654321111111",
+            "811111111111119",
+            "234234234234278",
+            "818181911112111"
+        ));
+        assertThat(result).isEqualTo("3121910778619");
+    }
 }
