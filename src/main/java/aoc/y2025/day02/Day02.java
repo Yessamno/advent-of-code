@@ -46,10 +46,6 @@ public class Day02 extends Day {
         return String.valueOf(sum);
     }
 
-    /**
-     * Part 1: Invalid if made of some sequence repeated exactly TWICE.
-     * This implies the length must be even.
-     */
     static class PartOnePredicate implements Predicate<Long> {
         @Override
         public boolean test(Long start) {
@@ -63,10 +59,7 @@ public class Day02 extends Day {
         }
     }
 
-    /**
-     * Part 2: Invalid if made of some sequence repeated AT LEAST twice.
-     * (e.g., twice, three times, five times, etc.)
-     */
+    
     static class PartTwoPredicate implements Predicate<Long> {
         @Override
         public boolean test(Long start) {
